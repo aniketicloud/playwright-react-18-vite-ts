@@ -4,6 +4,7 @@
     "ms-playwright.playwright",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "team-sapling.sapling"
+    "team-sapling.sapling",
+    "ritwickdey.liveserver"
   ]
 }
