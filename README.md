@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## TO-DO Things
 
-Currently, two official plugins are available:
+- [x] React + Vite + TS + SWC Setup
+- [x] Playwright End-to-End(E2E) testing [local]
+- [ ] Playwright Component testing [local]
+- [ ] Playwright End-to-End(E2E) testing [CI job]
+- [ ] Playwright Component testing [CI job]
+- [ ] Report Generation (default Playwright) [local]
+- [ ] Report Generation (default Playwright) [CI]
+- [ ] Deploy E2E reports Github Pages[CI]
+- [ ] Deploy component + visual regression reports Github Pages[CI]
+- [ ] Jira Integration
+- [ ] Teams Integration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## TO-DO (Optional)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- [ ] Allure report
+- [ ] Code Doverage
+- [ ] Slack integration
+- [ ] History of records in database (DynamoDB-AWS)
+- [ ] Hostory of all reports in React(Remix)/Vue(Nuxt) web application (S3-AWS)
