@@ -5,7 +5,7 @@
 CI - Continuous Integration
 E2E - End-to-End
 
-## TO-DO Things
+## TO-DO (Pilot Release)
 
 - [x] React + Vite + TS + SWC Setup
 - [x] Playwright End-to-End(E2E) testing setup [local] - only chromium at first
