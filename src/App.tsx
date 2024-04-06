@@ -1,5 +1,6 @@
 function App() {
-  return <main>Playwright capabilities</main>;
+  const framework = 'Playwright';
+  return <main>{framework}capabilities</main>;
 }
 
 export default App;
