@@ -1,1 +1,1 @@
-npm run pre-commit && git add -A .
+npx lint-staged --concurrent false

@@ -1,4 +1,4 @@
-# React + TypeScript + Vite + ESLint + TSLint + Prettier + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration + Husky Git hooks
+# React + TypeScript + Vite + ESLint + TSLint + Prettier + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration + Husky and lint-staged Git hooks
 
 ### Short words used in this guide
 
@@ -76,4 +76,4 @@ E2E - End-to-End
 ## Guide
 
 - Reports are generated if tests are run in the headless mode. These scripts are used to run the tests in headless mode `test-ct` and `test-e2e`. In this setup generated reports are not opened. Use `view-ct-reports` and `view-e2e-reports` scripts to open the reports.
-- pre-commit hook will run ESlint, TSlint, Prettier-write using Husky. As Prettier can modify the files, in pre-commit, `git add -A` will be run after these checks are done. It is written in `.husky->pre-commit` file
+- pre-commit hook will run commands added in `.lintstagedrc`

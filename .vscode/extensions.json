@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "team-sapling.sapling",
     "ritwickdey.liveserver",
-    "ms-azuretools.vscode-docker"
+    "ms-azuretools.vscode-docker",
+    "pkief.material-icon-theme"
   ]
 }
