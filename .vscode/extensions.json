@@ -5,6 +5,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "team-sapling.sapling",
-    "ritwickdey.liveserver"
+    "ritwickdey.liveserver",
+    "ms-azuretools.vscode-docker"
   ]
 }

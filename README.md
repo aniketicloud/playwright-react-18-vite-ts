@@ -1,4 +1,4 @@
-# React + TypeScript + Vite + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration + Husky Git hooks
+# React + TypeScript + Vite + ESLint + TSLint + Prettier + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration + Husky Git hooks
 
 ### Short words used in this guide
 
@@ -8,6 +8,13 @@ E2E - End-to-End
 ## TO-DO (Pilot Release)
 
 - [x] React + Vite + TS + SWC Setup
+- [x] ESLint [local]
+- [x] TSLint [local]
+- [x] Prettier (check and write) [local]
+- [x] ESLint + Prettier setup [local]
+
+- [x] Husky, lint-staged hooks for code warning(ESlint, TSlint, Prettier)
+
 - [x] Playwright End-to-End(E2E) testing setup [local] - only chromium at first
 - [x] Playwright Component testing setup [local] - only chromium at first
 
