@@ -13,7 +13,10 @@ E2E - End-to-End
 - [x] Prettier (check and write) [local]
 - [x] ESLint + Prettier setup [local]
 
-- [x] Husky, lint-staged hooks for code warning(ESlint, TSlint, Prettier)
+- [x] Husky pre-commit hook for code check(ESlint, TSlint) and Prettier format.
+- [ ] Branch protection for main branch
+- [ ] Code quality check after pushing to any branch starting with `feature/`
+- [ ] Code quality check after pushing to `main` branch
 
 - [x] Playwright End-to-End(E2E) testing setup [local] - only chromium at first
 - [x] Playwright Component testing setup [local] - only chromium at first
@@ -73,3 +76,4 @@ E2E - End-to-End
 ## Guide
 
 - Reports are generated if tests are run in the headless mode. These scripts are used to run the tests in headless mode `test-ct` and `test-e2e`. In this setup generated reports are not opened. Use `view-ct-reports` and `view-e2e-reports` scripts to open the reports.
+- pre-commit hook will run ESlint, TSlint, Prettier-write using Husky. As Prettier can modify the files, in pre-commit, `git add -A` will be run after these checks are done. It is written in `.husky->pre-commit` file
