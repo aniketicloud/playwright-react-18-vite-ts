@@ -1,9 +1,10 @@
 # React + TypeScript + Vite + ESLint + TSLint + Prettier + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration + Husky and lint-staged Git hooks
 
-### Short words used in this guide
+### Word meanings used in this guide
 
-CI - Continuous Integration
-E2E - End-to-End
+CI : Continuous Integration
+E2E : End-to-End
+code-quality\* : ESlint fix, ESlint check, TSlint check, Prettier files format
 
 ## TO-DO (Pilot Release)
 
@@ -13,15 +14,21 @@ E2E - End-to-End
 - [x] Prettier (check and write) [local]
 - [x] ESLint + Prettier setup [local]
 
-- [x] Husky pre-commit hook for code check(ESlint, TSlint) and Prettier format.
-- [ ] Branch protection for main branch
-- [ ] Code quality check after pushing to any branch starting with `feature/`
-- [ ] Code quality check after pushing to `main` branch
+- [x] Husky + lint-staged: pre-commit hook for code-quality\* [local]
+- [x] Sonarlint - extension for VSCode [local]
+- [ ] `Commitlint` [local]
+- [ ] Branch protection for main branch - no direct upload to main branch [Github]
+- [ ] Code-quality\* check after pushing to any branch starting with `feature/` [CI]
+- [ ] Code-quality\* check when merge request to `main` branch [CI]
 
 - [x] Playwright End-to-End(E2E) testing setup [local] - only chromium at first
 - [x] Playwright Component testing setup [local] - only chromium at first
 
-- [ ] React TS Button component
+- [x] React TS + Storybook TS setup - create component and stories directory
+
+- [x] React TS Button component
+- [x] Button story
+
 - [ ] Button Component testing
 - [ ] Button Visual testing
 
@@ -77,3 +84,4 @@ E2E - End-to-End
 
 - Reports are generated if tests are run in the headless mode. These scripts are used to run the tests in headless mode `test-ct` and `test-e2e`. In this setup generated reports are not opened. Use `view-ct-reports` and `view-e2e-reports` scripts to open the reports.
 - pre-commit hook will run commands added in `.lintstagedrc`
+- For `commitlint` conventions, use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
