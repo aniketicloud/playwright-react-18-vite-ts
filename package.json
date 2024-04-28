@@ -14,7 +14,8 @@
     "prepare": "husky",
     "test-ct": "playwright test -c playwright-ct.config.ts",
     "view-ct-reports": "npx playwright show-report playwright-report/component",
-    "test-e2e": "playwright test -c playwright-e2e.config.ts",
+    "run-test-e2e": "playwright test -c playwright-e2e.config.ts",
+    "open-test-e2e": "playwright test -c playwright-e2e.config.ts --ui",
     "view-e2e-reports": "npx playwright show-report playwright-report/e2e",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
