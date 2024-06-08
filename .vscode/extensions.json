@@ -8,6 +8,12 @@
     "ritwickdey.liveserver",
     "ms-azuretools.vscode-docker",
     "pkief.material-icon-theme",
-    "sonarsource.sonarlint-vscode"
+    "sonarsource.sonarlint-vscode",
+    "eamodio.gitlens",
+    "vinliao.fast-arrow",
+    "johnpapa.vscode-peacock",
+    "aaron-bond.better-comments",
+    "github.vscode-pull-request-github",
+    "atlassian.atlascode"
   ]
 }

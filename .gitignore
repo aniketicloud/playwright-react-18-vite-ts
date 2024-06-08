@@ -22,13 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-
 *storybook.log
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

@@ -1,6 +1,6 @@
 # React + TypeScript + Vite + ESLint + TSLint + CommitLint + Prettier + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration + Husky and lint-staged Git hooks
 
-### Word meanings used in this guide
+<!-- ### Word meanings used in this guide
 
 CI : Continuous Integration
 E2E : End-to-End
@@ -79,7 +79,7 @@ code-quality\* : ESlint fix, ESlint check, TSlint check, Prettier files format
 - [ ] Slack integration
 - [ ] History of records in database (DynamoDB-AWS)
 - [ ] History of all reports in React(Remix)/Vue(Nuxt) web application (S3-AWS)
-- [ ] Simple Unit testing
+- [ ] Simple Unit testing -->
 
 ## Guide
 
