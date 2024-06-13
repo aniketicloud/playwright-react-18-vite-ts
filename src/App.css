@@ -1,0 +1,12 @@
+.btn-group-colors > button {
+  display: inline;
+  margin: 5px;
+  background-color: #3498db;
+  color: white;
+  padding: 5px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
