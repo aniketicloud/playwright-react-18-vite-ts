@@ -12,12 +12,13 @@
     "code-quality:prettier:write": "prettier --write .",
     "pre-commit": "lint-staged --concurrent false",
     "prepare": "husky",
-    "run-test-ct": "playwright test -c playwright-ct.config.ts",
-    "view-ct-reports": "npx playwright show-report playwright-report/component",
-    "open-test-ct": "playwright test -c playwright-ct.config.ts --ui",
-    "run-test-e2e": "playwright test -c playwright-e2e.config.ts",
-    "view-e2e-reports": "npx playwright show-report playwright-report/e2e",
-    "open-test-e2e": "playwright test -c playwright-e2e.config.ts --ui",
+    "open-ct-test": "playwright test -c playwright-ct.config.ts --ui",
+    "run-ct-test": "playwright test -c playwright-ct.config.ts",
+    "view-ct-test-reports": "npx playwright show-report playwright-report/component",
+    "generate-ct-test-coverage-html": "npx nyc report --reporter=html",
+    "run-e2e-test": "playwright test -c playwright-e2e.config.ts",
+    "view-e2e-test-reports": "npx playwright show-report playwright-report/e2e",
+    "open-e2e-test": "playwright test -c playwright-e2e.config.ts --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -53,9 +54,11 @@
     "eslint-plugin-storybook": "^0.8.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
+    "nyc": "^17.0.0",
     "prettier": "3.2.5",
     "storybook": "^8.1.6",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "vite-plugin-istanbul": "^6.0.2"
   }
 }
