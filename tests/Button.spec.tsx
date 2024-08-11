@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/experimental-ct-react';
+import { expect, test } from './baseFixtures';
 import { Button } from '../src/components/button/Button';
 
 const btnLabel = 'Click me';

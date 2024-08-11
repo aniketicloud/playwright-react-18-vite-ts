@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/experimental-ct-react';
+import react from '@vitejs/plugin-react-swc';
+import istanbul from 'vite-plugin-istanbul';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -28,6 +30,18 @@ export default defineConfig({
 
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
+
+    ctViteConfig: {
+      plugins: [
+        react(),
+        istanbul({
+          include: 'src/**/**/**/*.{ts,tsx,js,jsx}',
+          exclude: ['node_modules', 'test/'],
+          extension: ['.js', '.ts', '.tsx'],
+          forceBuildInstrument: true,
+        }),
+      ],
+    },
   },
 
   /* Configure projects for major browsers */
