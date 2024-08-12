@@ -16,6 +16,7 @@
     "run-ct-test": "playwright test -c playwright-ct.config.ts",
     "view-ct-test-report": "npx playwright show-report playwright-report/component",
     "generate-ct-test-coverage-html": "npx nyc report --reporter=html",
+    "docker-up": "docker-compose up --build",
     "run-e2e-test": "playwright test -c playwright-e2e.config.ts",
     "view-e2e-test-report": "npx playwright show-report playwright-report/e2e",
     "open-e2e-test": "playwright test -c playwright-e2e.config.ts --ui",
