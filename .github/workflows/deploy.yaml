@@ -8,8 +8,8 @@ on:
     branches:
       - main
 
-permissions: # Ensure the GITHUB_TOKEN has write permissions
-  contents: write # This grants the token write access to the repository content
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -53,3 +53,10 @@ jobs:
             storybook-static
           destination_dir: deployment/${{ github.ref_name }}/
           keep_files: true
+
+      # Output the URLs to GitHub Actions logs
+      - name: Display Deployed URLs
+        run: |
+          echo "Storybook URL: https://<username>.github.io/<repository-name>/deployment/${GITHUB_REF_NAME}/storybook-static/"
+          echo "Playwright Component Tests URL: https://<username>.github.io/<repository-name>/deployment/${GITHUB_REF_NAME}/playwright-report/component/"
+          echo "Playwright E2E Tests URL: https://<username>.github.io/<repository-name>/deployment/${GITHUB_REF_NAME}/playwright-report/e2e/"
