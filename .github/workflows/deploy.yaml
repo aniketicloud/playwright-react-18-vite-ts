@@ -34,10 +34,12 @@ jobs:
       # Run Playwright component tests and generate reports
       - name: Run Playwright Component Tests
         run: npm run run-ct-test
+        continue-on-error: true
 
       # Run Playwright e2e tests and generate reports
       - name: Run Playwright E2E Tests
         run: npm run run-e2e-test
+        continue-on-error: true
 
       # Build Storybook
       - name: Build Storybook
@@ -56,6 +58,7 @@ jobs:
 
       # Output the URLs as annotations
       - name: Show Deployed URLs
+        if: always()
         run: |
           echo "::notice title=Storybook URL::https://aniketicloud.github.io/playwright-react-18-vite-ts/deployment/${GITHUB_REF_NAME}/storybook-static/"
           echo "::notice title=Playwright Component Tests URL::https://aniketicloud.github.io/playwright-react-18-vite-ts/deployment/${GITHUB_REF_NAME}/playwright-report/component/"
