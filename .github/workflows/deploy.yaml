@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+permissions: # Ensure the GITHUB_TOKEN has write permissions
+  contents: write # This grants the token write access to the repository content
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
