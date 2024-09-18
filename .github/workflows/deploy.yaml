@@ -24,6 +24,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Install Chromium for Playwright with dependencies
+      - name: Install Playwright Chromium with Dependencies
+        run: npx playwright install chromium --with-deps
+
       # Run Playwright component tests and generate reports
       - name: Run Playwright Component Tests
         run: npm run run-ct-test
