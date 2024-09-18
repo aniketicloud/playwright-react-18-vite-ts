@@ -1,11 +1,22 @@
 version: '3.8'
+
 services:
-  playwright-test:
-    image: playwright-test
+  # Component Tests
+  component-tests:
+    image: playwright-tests
     build:
       context: .
-      dockerfile: ./Dockerfile
-    command: npm run run-ct-test
+      dockerfile: Dockerfile
     volumes:
-      - ./playwright-report/:/app/playwright-report
-      - ./test-results/:/app/test-results
+      - ./playwright-report/component:/app/playwright-report/component
+    command: npm run run-ct-test
+
+  # End-to-End Tests
+  e2e-tests:
+    image: playwright-tests
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./playwright-report/e2e:/app/playwright-report/e2e
+    command: npm run run-e2e-test

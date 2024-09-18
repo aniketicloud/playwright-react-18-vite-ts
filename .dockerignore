@@ -6,7 +6,7 @@ yarn-debug.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
+# Node modules
 node_modules
 
 # Build output
@@ -25,8 +25,7 @@ dist-ssr
 coverage
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+.vscode
 .idea
 .DS_Store
 *.suo
@@ -35,26 +34,3 @@ coverage
 *.sln
 *.sw?
 *storybook.log
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Parcel cache
-.cache
-
-# Output of 'npm pack'
-*.tgz
-
-# Optional stylelint cache
-.stylelintcache
-
-# MacOS files
-._*
-.Spotlight-V100
-.Trashes
