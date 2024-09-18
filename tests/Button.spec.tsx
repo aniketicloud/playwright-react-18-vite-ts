@@ -25,3 +25,8 @@ test('event should work', async ({ mount }) => {
   // Assert that respective events have been fired.
   expect(clicked).toBeTruthy();
 });
+
+test('takes the screenshot at default state', async ({ mount, page }) => {
+  await mount(<Button label={btnLabel} />);
+  await expect(page).toHaveScreenshot();
+});
