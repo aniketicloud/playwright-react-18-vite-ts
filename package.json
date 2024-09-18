@@ -21,7 +21,11 @@
     "view-e2e-test-report": "npx playwright show-report playwright-report/e2e",
     "open-e2e-test": "playwright test -c playwright-e2e.config.ts --ui",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "docker:build": "docker-compose build",
+    "docker:run-ct-test": "docker-compose run --rm component-tests",
+    "docker:run-e2e-test": "docker-compose run --rm e2e-tests",
+    "docker:run-all": "docker-compose up --abort-on-container-exit"
   },
   "dependencies": {
     "react": "^18.2.0",
