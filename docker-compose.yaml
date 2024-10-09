@@ -9,6 +9,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./playwright-report/component:/app/playwright-report/component
+      # Mount the component test snapshots directory
+      - ./tests/__snapshots__:/app/tests/__snapshots__
     command: npm run run-ct-test
 
   # End-to-End Tests
