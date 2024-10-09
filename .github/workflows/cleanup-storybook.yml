@@ -1,0 +1,27 @@
+name: Cleanup Storybook
+
+on:
+  schedule:
+    # Runs twice a year: once on January 1st and once on July 1st
+    - cron: '0 0 1 1 *' # Runs on January 1st at midnight UTC
+    - cron: '0 0 1 7 *' # Runs on July 1st at midnight UTC
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages # Checkout the gh-pages branch where Storybook is deployed
+
+      - name: Remove all folders except for main
+        run: |
+          find ./storybook -maxdepth 1 -type d ! -name 'main' ! -name '.' -exec rm -rf {} +
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Cleanup non
