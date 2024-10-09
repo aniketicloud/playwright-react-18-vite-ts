@@ -6,9 +6,9 @@ on:
       - '**' # Trigger on any branch push
   pull_request:
     types:
-      - closed # Trigger only when a PR is closed (merged) into main
+      - closed # Trigger only when a PR is closed (merged)
     branches:
-      - main # Only trigger this when the PR is merged into the `main` branch
+      - main # Only trigger when PR is merged into `main`
 
 jobs:
   build-and-deploy:
@@ -21,19 +21,28 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Use Node.js 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build Storybook
-        run: npm run build-storybook # Assumes you have a `build-storybook` script in your package.json
+        run: npm run build-storybook
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static # The folder where Storybook outputs the static files
+          publish_dir: ./storybook-static
           keep_files: true
-          publish_branch: gh-pages # Deploy everything to gh-pages branch
-          destination_dir: ${{ github.ref_name }} # Create a folder for each branch
+          publish_branch: gh-pages
+          destination_dir: storybook/${{ github.ref_name }} # Deploy to storybook folder
+
+      - name: Set deployment URL output
+        id: deployment
+        run: echo "::set-output name=storybook_url::https://aniketicloud.github.io/playwright-react-18-vite-ts/storybook/${{ github.ref_name }}/"
+
+      - name: Display deployment URL in job summary
+        run: |
+          STORYBOOK_URL=https://aniketicloud.github.io/playwright-react-18-vite-ts/storybook/${{ github.ref_name }}/
+          echo "Storybook deployed successfully. [View Storybook]($STORYBOOK_URL)" >> $GITHUB_STEP_SUMMARY
