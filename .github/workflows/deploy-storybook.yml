@@ -3,10 +3,12 @@ name: Deploy Storybook
 on:
   push:
     branches:
-      - '**' # Trigger on any branch
+      - '**' # Trigger on any branch push
   pull_request:
+    types:
+      - closed # Trigger only when a PR is closed (merged) into main
     branches:
-      - main # Also trigger when a PR is merged into `main`
+      - main # Only trigger this when the PR is merged into the `main` branch
 
 jobs:
   build-and-deploy:
