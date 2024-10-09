@@ -1,0 +1,37 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches:
+      - '**' # Trigger on any branch
+  pull_request:
+    branches:
+      - main # Also trigger when a PR is merged into `main`
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Use Node.js 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Storybook
+        run: npm run build-storybook # Assumes you have a `build-storybook` script in your package.json
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static # The folder where Storybook outputs the static files
+          keep_files: true
+          publish_branch: gh-pages # Deploy everything to gh-pages branch
+          destination_dir: ${{ github.ref_name }} # Create a folder for each branch
