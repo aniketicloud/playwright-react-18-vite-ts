@@ -1,10 +1,48 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Function to start Docker based on the operating system
+start_docker() {
+  case "$(uname -s)" in
+    Linux)
+      sudo systemctl start docker
+      ;;
+    Darwin) # macOS
+      open --background -a Docker
+      ;;
+    CYGWIN*|MINGW32*|MSYS*|MINGW*) # Windows
+      # Check if Docker is installed and start it
+      if ! docker info > /dev/null 2>&1; then
+        echo "Docker is not running. Starting Docker Desktop..."
+        start "" "C:\Program Files\Docker\Docker\Docker Desktop.exe" &
+
+        # Wait for a few seconds to give Docker time to start
+        sleep 10
+
+        # Check again if Docker is running
+        if ! docker info > /dev/null 2>&1; then
+          echo "Failed to start Docker. Please start Docker manually and try pushing again."
+          exit 1
+        fi
+      fi
+      ;;
+    * )
+      echo "Unsupported OS. Please start Docker manually."
+      exit 1
+      ;;
+  esac
+}
+
 # Check if Docker is running
 if ! docker info > /dev/null 2>&1; then
-  echo "Docker is not running. Please start Docker and try pushing again."
-  exit 1
+  echo "Docker is not running. Attempting to start Docker..."
+  start_docker
+
+  # Check again if Docker is running
+  if ! docker info > /dev/null 2>&1; then
+    echo "Failed to start Docker. Please start Docker manually and try pushing again."
+    exit 1
+  fi
 fi
 
 # Run Docker-based component tests before pushing the code
