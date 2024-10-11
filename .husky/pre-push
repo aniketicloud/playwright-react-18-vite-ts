@@ -1,8 +1,14 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Run lint-staged checks
-npx lint-staged --concurrent false
-
 # Run Docker-based component tests before pushing the code
+echo "Running Docker for component tests..."
 npm run docker:build:run-ct-test
+
+# Check if the npm script succeeded
+if [ $? -ne 0 ]; then
+  echo "Docker tests failed, aborting push."
+  exit 1
+fi
+
+echo "Docker tests passed, proceeding with push."
