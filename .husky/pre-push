@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged checks
+npx lint-staged --concurrent false
+
+# Run Docker-based component tests before pushing the code
+npm run docker:build:run-ct-test
