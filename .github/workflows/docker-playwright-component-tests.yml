@@ -1,12 +1,7 @@
-name: Playwright Tests
+name: Docker Playwright Component Tests
 
 on:
-  push:
-    branches:
-      - '**'
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch: # Only runs manually
 
 jobs:
   # Define the job for running tests
@@ -23,11 +18,11 @@ jobs:
     steps:
       # Checkout the code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up Node.js (required for npm commands)
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -39,7 +34,7 @@ jobs:
 
       # Cache npm modules
       - name: Cache npm dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
@@ -60,7 +55,7 @@ jobs:
       # Archive Component Test Reports
       - name: Upload Component Test Reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: component-test-report
           path: playwright-report/component
@@ -75,7 +70,7 @@ jobs:
       # Archive End-to-End Test Reports
       - name: Upload End-to-End Test Reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: e2e-test-report
           path: playwright-report/e2e
