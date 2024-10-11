@@ -1,0 +1,96 @@
+name: Playwright Tests
+
+on:
+  # Run tests on push to any branch and pull request merges into the main branch
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Define the job for running tests
+  tests:
+    runs-on: ubuntu-latest
+
+    services:
+      # Set up Docker for testing
+      docker:
+        image: docker:20.10.16
+        options: --privileged
+        ports:
+          - 3100:3100
+
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up Node.js (required for npm commands)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Cache npm modules
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Build Docker images for component and e2e tests
+      - name: Build Docker image for tests
+        run: |
+          docker-compose build
+
+      # Run Component Tests in Docker
+      - name: Run Component Tests
+        run: |
+          docker-compose run --rm component-tests
+        continue-on-error: true
+
+      # Archive Component Test Reports
+      - name: Upload Component Test Reports
+        # Run even if the tests fail
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: component-test-report
+          path: playwright-report/component
+          retention-days: 30
+
+      # Run End-to-End Tests in Docker
+      - name: Run End-to-End Tests
+        run: |
+          docker-compose run --rm e2e-tests
+        continue-on-error: true
+
+      # Archive End-to-End Test Reports
+      - name: Upload End-to-End Test Reports
+        # Run even if the tests fail
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: e2e-test-report
+          path: playwright-report/e2e
+          retention-days: 30
+
+  # Create a badge for test pass/fail status
+  badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Badge for Test Status
+        if: always()
+        run: |
+          if [ "$GITHUB_WORKFLOW_STATUS" == "success" ]; then
+            echo "![Tests](https://img.shields.io/badge/Tests-passed-brightgreen)" > badge.md
+          else
+            echo "![Tests](https://img.shields.io/badge/Tests-failed-red)" > badge.md
+      - name: Upload Badge to PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          message: '$(cat badge.md)'
