@@ -1,6 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Check if Docker is running
+if ! docker info > /dev/null 2>&1; then
+  echo "Docker is not running. Please start Docker and try pushing again."
+  exit 1
+fi
+
 # Run Docker-based component tests before pushing the code
 echo "Running Docker for component tests..."
 npm run docker:build:run-ct-test
