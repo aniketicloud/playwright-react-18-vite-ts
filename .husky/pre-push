@@ -1,13 +1,27 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# Function to check if Docker is running and start it if not
+# Function to start Docker
 start_docker() {
+  # Check the OS type
+  OS="$(uname -s)"
+  
   for i in {1..3}; do
-    if ! winpty docker info > /dev/null 2>&1; then
+    # Check if Docker is running
+    if ! docker info > /dev/null 2>&1; then
       echo "Attempting to start Docker... (Attempt $i)"
-      # Add your command to start Docker here
-      # For example: "start /B C:\path\to\Docker\Docker.exe" for Docker Desktop
+      
+      if [ "$OS" = "Linux" ]; then
+        # Command to start Docker on Linux
+        sudo systemctl start docker
+      elif [ "$OS" = "Darwin" ]; then
+        # Command to start Docker on macOS
+        open -a Docker
+      elif [[ "$OS" == *"NT"* ]]; then
+        # Command to start Docker on Windows
+        start /B "Docker" "C:\path\to\Docker\Docker.exe" # Update with your Docker installation path
+      fi
+      
       sleep 10
     else
       echo "Docker is running."
