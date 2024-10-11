@@ -1,7 +1,6 @@
 name: Playwright Tests
 
 on:
-  # Run tests on push to any branch and pull request merges into the main branch
   push:
     branches:
       - '**'
@@ -15,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      # Set up Docker for testing
       docker:
         image: docker:20.10.16
         options: --privileged
@@ -32,6 +30,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+
+      # Install Docker Compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
 
       # Cache npm modules
       - name: Cache npm dependencies
@@ -55,7 +59,6 @@ jobs:
 
       # Archive Component Test Reports
       - name: Upload Component Test Reports
-        # Run even if the tests fail
         if: always()
         uses: actions/upload-artifact@v3
         with:
@@ -71,26 +74,9 @@ jobs:
 
       # Archive End-to-End Test Reports
       - name: Upload End-to-End Test Reports
-        # Run even if the tests fail
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: e2e-test-report
           path: playwright-report/e2e
           retention-days: 30
-
-  # Create a badge for test pass/fail status
-  badge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate Badge for Test Status
-        if: always()
-        run: |
-          if [ "$GITHUB_WORKFLOW_STATUS" == "success" ]; then
-            echo "![Tests](https://img.shields.io/badge/Tests-passed-brightgreen)" > badge.md
-          else
-            echo "![Tests](https://img.shields.io/badge/Tests-failed-red)" > badge.md
-      - name: Upload Badge to PR Comment
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          message: '$(cat badge.md)'
