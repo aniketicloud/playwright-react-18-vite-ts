@@ -19,7 +19,7 @@ start_docker() {
         open -a Docker
       elif [[ "$OS" == *"NT"* ]]; then
         # Command to start Docker on Windows
-        start /B "Docker" "C:\path\to\Docker\Docker.exe" # Update with your Docker installation path
+        start "" "C:\Program Files\Docker\Docker\Docker Desktop.exe" # Update with your Docker installation path
       fi
       
       sleep 10
