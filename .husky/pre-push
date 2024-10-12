@@ -36,4 +36,4 @@ start_docker() {
 start_docker
 
 # Run Docker-based component tests before pushing the code
-npm run docker:build:run-ct-test
+./run-tests.sh
