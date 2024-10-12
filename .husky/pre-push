@@ -35,5 +35,12 @@ start_docker() {
 # Check if Docker is running
 start_docker
 
-# Run Docker-based component tests before pushing the code
-./run-tests.sh
+# Detect Windows environment
+OS="$(uname -s)"
+if [[ "$OS" == *"NT"* ]]; then
+  # Use winpty for Windows
+  winpty bash ./run-tests.sh
+else
+  # Directly run the script on Unix-like systems
+  ./run-tests.sh
+fi
