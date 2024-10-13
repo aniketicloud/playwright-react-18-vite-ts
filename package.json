@@ -24,7 +24,7 @@
     "build-storybook": "storybook build",
     "docker:build": "docker-compose build",
     "docker:run-ct-test": "docker-compose run --rm component-tests",
-    "docker:build:run-ct-test": "./run-tests.sh",
+    "docker:build:run-ct-test": "docker-compose build && docker-compose run --rm component-tests",
     "docker:run-e2e-test": "docker-compose run --rm e2e-tests",
     "docker:build:run-e2e-test": "docker-compose build && docker-compose run --rm e2e-tests",
     "docker:run-all": "docker-compose up --abort-on-container-exit"
