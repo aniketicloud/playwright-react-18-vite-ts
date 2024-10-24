@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 
+import { ParentComponent } from './MUI_POC/ParentComponent';
+
 const framework = 'Playwright';
 function App() {
   const [backgroundColor, setBackgroundColor] = useState('#e74c3c');
@@ -24,6 +26,7 @@ function App() {
         <button onClick={handleMakeGreen}>Green</button>
         <button onClick={handleMakeYellow}>Yellow</button>
       </div>
+      <ParentComponent />
     </>
   );
 }
