@@ -15,5 +15,6 @@ export default defineConfig({
       include: ['src/**/*.{ts,tsx}'], // Include only TypeScript files in the src folder for coverage
       exclude: ['src/stories/**'], // Exclude all files nested inside src/stories
     },
+    setupFiles: './src/setupTests.ts',
   },
 });
