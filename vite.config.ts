@@ -7,6 +7,11 @@ export default defineConfig({
     sourcemap: true, // Enable source maps for the build
   },
   test: {
+    // reporters: ['default', 'html'],
+    reporters: [
+      'default',
+      ['html', { outputFile: 'vitest/test-report/index.html' }],
+    ],
     environment: 'jsdom', // Set the environment to jsdom for React
     include: ['src/**/*.test.{ts,tsx}'], // Include only test files in the src folder
     coverage: {

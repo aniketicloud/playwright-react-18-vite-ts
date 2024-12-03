@@ -1,5 +1,22 @@
 # React + TypeScript + Vite + ESLint + TSLint + CommitLint + Prettier + Husky and lint-staged Git hooks + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration
 
+## Getting Started
+
+This project includes several scripts for development, testing, and code quality. Below is a detailed explanation of each script.
+
+Before running any script, make sure to install the dependencies:
+
+```bash
+npm install
+```
+
+You can execute the scripts using:
+
+```bash
+npm run <Script>
+npm run dev
+```
+
 ## Scripts Overview
 
 ### Development and Build
@@ -22,16 +39,16 @@
 
 | Script                         | Command                                                | Description                                  |
 | ------------------------------ | ------------------------------------------------------ | -------------------------------------------- |
-| unit-test                      | vitest                                                 | Runs unit tests using Vitest.                |
-| unit-test:coverage             | vitest run --coverage                                  | Generates unit test coverage reports.        |
+| run-unit-test                  | vitest                                                 | Runs unit tests using Vitest.                |
+| run-unit-test:coverage         | vitest run --coverage                                  | Generates unit test coverage reports.        |
 | install-playwright-browsers    | playwright install                                     | Installs required browsers for Playwright.   |
 | open-ct-test                   | playwright test -c playwright-ct.config.ts --ui        | Opens the Playwright component test UI.      |
 | run-ct-test                    | playwright test -c playwright-ct.config.ts             | Runs Playwright component tests.             |
 | view-ct-test-report            | npx playwright show-report playwright-report/component | Views the Playwright component test report.  |
-| generate-ct-test-coverage-html | npx nyc report --reporter=html                         | Generates Playwright HTML coverage reports.             |
+| generate-ct-test-coverage-html | npx nyc report --reporter=html                         | Generates Playwright HTML coverage reports.  |
+| open-e2e-test                  | playwright test -c playwright-e2e.config.ts --ui       | Opens the Playwright end-to-end test UI.     |
 | run-e2e-test                   | playwright test -c playwright-e2e.config.ts            | Runs end-to-end tests using Playwright.      |
 | view-e2e-test-report           | npx playwright show-report playwright-report/e2e       | Views the Playwright end-to-end test report. |
-| open-e2e-test                  | playwright test -c playwright-e2e.config.ts --ui       | Opens the Playwright end-to-end test UI.     |
 
 ### Storybook
 
@@ -51,7 +68,30 @@
 | docker:build:run-e2e-test | docker-compose build && docker-compose run --rm e2e-tests       | Builds and runs end-to-end tests in Docker. |
 | docker:run-all            | docker-compose up --abort-on-container-exit                     | Runs all services using Docker Compose.     |
 
-- Reports are generated if tests are run in the headless mode. These scripts are used to run the tests in headless mode `run-ct-test` and `run-test-e2e`. In this setup generated reports are not opened. Use `view-ct-report` and `view-e2e-report` scripts to open the reports.
+<br />
+
+## Playwright Testing Reports
+
+- Playwright reports are generated if tests are run in headless mode using run-ct-test or run-e2e-test.
+- To view Playwright reports:
+
+  - Use view-ct-test-report for Playwright component tests.
+  - Use view-e2e-test-report for Playwright end-to-end tests.
+
+- Code Coverage for Playwright Component Tests:
+  - Code coverage is configured in playwright-ct-config.ts using Istanbul.
+  - The coverage is generated as a JSON summary in .nyc_output (ignored by Git).
+  - Convert to an HTML report by running:
+    ```bash
+    npm run generate-ct-test-coverage-html
+    ```
+  - The report will be available in the coverage folder (also Git-ignored).
+
+<br />
+
+## Vitest Testing Reports
+
+<!-- - Reports are generated if tests are run in the headless mode. These scripts are used to run the tests in headless mode `run-ct-test` and `run-test-e2e`. In this setup generated reports are not opened. Use `view-ct-report` and `view-e2e-report` scripts to open the reports.
 - Code coverage for component test will be run. The code is inside playwright-ct-config.ts. Search for istanbul. This code covereage will be of json summary in `.nyc_output` which will be in gitignore. To covert the report to HTML format run `generate-ct-test-coverage-html`. This HTML report will be generated in coverage folder which will be in gitignore.
 - pre-commit hook will run commands added in `.lintstagedrc`
 - For `commitlint` conventions, use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). The commit message should be structured as follows:
@@ -94,7 +134,7 @@ Refs: 676104e, a215868
 ```
 
 - `docs: correct spelling of Configure.mdx`
-- `revert: let us never again speak of the noodle incident`
+- `revert: let us never again speak of the noodle incident` -->
 
 ## FAQ
 
