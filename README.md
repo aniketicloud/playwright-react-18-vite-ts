@@ -89,52 +89,61 @@ npm run dev
 
 <br />
 
-## Vitest Testing Reports
+## Directories
 
-<!-- - Reports are generated if tests are run in the headless mode. These scripts are used to run the tests in headless mode `run-ct-test` and `run-test-e2e`. In this setup generated reports are not opened. Use `view-ct-report` and `view-e2e-report` scripts to open the reports.
-- Code coverage for component test will be run. The code is inside playwright-ct-config.ts. Search for istanbul. This code covereage will be of json summary in `.nyc_output` which will be in gitignore. To covert the report to HTML format run `generate-ct-test-coverage-html`. This HTML report will be generated in coverage folder which will be in gitignore.
-- pre-commit hook will run commands added in `.lintstagedrc`
-- For `commitlint` conventions, use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). The commit message should be structured as follows:
+| Directory                   | Purpose                                          |
+| --------------------------- | ------------------------------------------------ |
+| vitest/test-report          | Stores the unit test (Vitest) report             |
+| vitest/test-coverage        | Stores the unit test (Vitest) coverage           |
+| tests                       | Folder to write Playwright component test report |
+| e2e                         | Folder to write Playwright e2e test report       |
+| playwright-report/component | Stores Playwright component test report          |
+| playwright-report/e2e       | Stores the Playwright e2e report                 |
 
-```command
+## Git Hooks and Commitlint
+
+### Pre-commit Hook
+
+The pre-commit hook runs commands defined in `.lintstagedrc`.
+
+### Commit Message Guidelines
+
+We use Conventional Commits for structured and meaningful commit messages.
+
+```text
 <type>[optional scope]: <description>
-
 [optional body]
-
 [optional footer(s)]
 ```
 
-### Conventions of commitlint:
+### Commitlint Types:
 
-- <type>: add main point of focus. `feat` , `bug`, `docs`, `refactor`, `test`, `perf`, `ci`, `chore`, `style`, `revert`
-- [optional scope]: provide additional information. `parser`, `lang`, `api`,
-- add ! after `<type>` => `<type>!` or `<type>[optional scope]` =>`<type>[optional scope]!` to draw attention to breaking changes.
-- <description>: add the description of the commit. Use present form verb(Use _add_. Do not use _added_) Do not add full stop at the end of the description. after a colon and a white space `: `
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation only changes
+- `style`: Changes that do not affect the code meaning (white-space, formatting, etc.)
+- `refactor`: Code changes that neither fix a bug nor add a feature
+- `test`: Adding or updating tests
+- `perf`: Performance improvements
+- `ci`: Continuous Integration-related changes
+- `chore`: Minor changes like updating dependencies
+- `revert`: Reverts a previous commit
 
-### examples of commitlint:
+<strong>Breaking Changes:</strong> Add a `!` after the type or scope to signify a breaking change.
 
-- `feat: Playwright testing framework added`
-- `feat(lang): add Hindi language`
-- `test(component): add component tests for button component`
-- `feat(api)!: add new required parameter while calling the getUsers API`
+#### Examples:
 
--
+- `feat`: add Playwright testing framework
+- `fix`: resolve API response bug
+- `docs`: update README.md
+- `refactor(api)!`: change API response structure
+- `test(component)`: add button component tests
 
-```
-chore!: remove support of Node 12
-BREAKING CHANGE: http.IncomingMessage 'close' event is not available
-```
-
--
-
-```
+```text
 revert: let us never again speak of the noodle incident
 
-Refs: 676104e, a215868
+Refs: 123abc, 456def
 ```
-
-- `docs: correct spelling of Configure.mdx`
-- `revert: let us never again speak of the noodle incident` -->
 
 ## FAQ
 

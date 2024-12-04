@@ -19,6 +19,7 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'], // Specify coverage reporters
       include: ['src/**/*.{ts,tsx}'], // Include only TypeScript files in the src folder for coverage
       exclude: ['src/stories/**'], // Exclude all files nested inside src/stories
+      reportsDirectory: 'vitest/test-coverage',
     },
     setupFiles: './src/setupTests.ts',
   },
