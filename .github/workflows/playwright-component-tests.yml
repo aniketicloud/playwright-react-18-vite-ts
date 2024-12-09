@@ -28,20 +28,20 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Playwright Component Tests
+        id: run-tests
         run: npm run run-ct-test
         continue-on-error: true
 
-      - name: Upload Component Test Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: component-test-report
-          path: playwright-report/component
-          retention-days: 30
-
       - name: Generate Badge for Tests
         run: |
-          if [[ $? -eq 0 ]]; then
-            echo "![Tests Status](https://img.shields.io/badge/tests-passing-brightgreen)" > badge.svg
+          if [[ ${{ steps.run-tests.outcome }} == 'success' ]]; then
+            echo "![Tests Status](https://img.shields.io/badge/tests-passing-brightgreen)" > badge.md
           else
-            echo "![Tests Status](https://img.shields.io/badge/tests-failing-red)" > badge.svg
+            echo "![Tests Status](https://img.shields.io/badge/tests-failing-red)" > badge.md
           fi
+
+      - name: Upload Badge
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-status-badge
+          path: badge.md

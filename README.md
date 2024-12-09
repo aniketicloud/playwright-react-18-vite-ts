@@ -1,5 +1,7 @@
 # React + TypeScript + Vite + ESLint + TSLint + CommitLint + Prettier + Husky and lint-staged Git hooks + Playwright(End-to-End + Component + Visual Regression Testing) + Github badges + Github Pages deployment + Docker + Jira Integration + Slack/Teams Integration
 
+![Component test status](https://img.shields.io/badge/tests-passing-brightgreen)
+
 ## Getting Started
 
 This project includes several scripts for development, testing, and code quality. Below is a detailed explanation of each script.
