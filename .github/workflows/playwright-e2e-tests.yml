@@ -1,5 +1,5 @@
 name: Playwright e2e Tests
-run-name: '${{ github.actor }} is running Playwright e2e tests 🚀'
+run-name: '${{ github.actor }} is running e2e tests 🚀'
 
 on:
   pull_request:
