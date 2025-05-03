@@ -1,26 +1,49 @@
 import { useState } from 'react';
 
+const colors = {
+  red: '#e74c3c',
+  green: '#0ff34c',
+  yellow: '#f1c40f',
+};
+
 const ColorChanger = () => {
-  const [backgroundColor, setBackgroundColor] = useState('#e74c3c');
+  const [backgroundColor, setBackgroundColor] = useState(colors.red);
 
   const handleMakeRed = () => {
-    setBackgroundColor('#e74c3c');
+    setBackgroundColor(colors.red);
   };
   const handleMakeGreen = () => {
-    setBackgroundColor('#0ff34c');
+    setBackgroundColor(colors.green);
   };
   const handleMakeYellow = () => {
-    setBackgroundColor('#f1c40f');
+    setBackgroundColor(colors.yellow);
   };
 
   return (
     <>
       <h1 style={{ backgroundColor }}>Playwright capabilities</h1>
-      <span>Current color: {backgroundColor}</span>
+      <span style={{ color: backgroundColor }}>
+        Current color: {backgroundColor}
+      </span>
       <div className="btn-group-colors">
-        <button onClick={handleMakeRed}>Red</button>
-        <button onClick={handleMakeGreen}>Green</button>
-        <button onClick={handleMakeYellow}>Yellow</button>
+        <button
+          style={{ backgroundColor: colors.red, padding: 12 }}
+          onClick={handleMakeRed}
+        >
+          Red
+        </button>
+        <button
+          style={{ backgroundColor: colors.green, padding: 12 }}
+          onClick={handleMakeGreen}
+        >
+          Green
+        </button>
+        <button
+          style={{ backgroundColor: colors.yellow, padding: 12 }}
+          onClick={handleMakeYellow}
+        >
+          Yellow
+        </button>
       </div>
     </>
   );
