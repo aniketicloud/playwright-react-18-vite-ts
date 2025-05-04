@@ -1,14 +1,19 @@
 import './App.css';
 import { ParentComponent } from './MUI_POC/ParentComponent';
-import ColorChanger from './ColorChanger';
-import LayoutComponent from './sample/LayoutComponent';
+import ColorChanger from './pages/ColorChanger';
+import { Route, Routes } from 'react-router';
+import ReactExample from './pages/ReactExample';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <>
-      <ColorChanger />
-      <ParentComponent />
-      <LayoutComponent />
+      <NavBar />
+      <Routes>
+        <Route path="/color-changer" element={<ColorChanger />} />
+        <Route path="/example" element={<ReactExample />} />
+        <Route path="/mui-poc" element={<ParentComponent />} />
+      </Routes>
     </>
   );
 }
