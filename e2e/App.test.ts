@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/color-changer');
 });
 
 test('use Red as a default background color', async ({ page }) => {
